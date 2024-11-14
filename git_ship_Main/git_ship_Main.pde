@@ -78,7 +78,7 @@ void draw(){
   
   if(viewscreen) {
     //begin attitude control
-    if(!attitudeControl) beginDrift();
+   
     
     //starfield simulation
     for(int i = 0; i < stars. length; i++){
@@ -97,7 +97,7 @@ void draw(){
     holodeck.display();
   
     //end of attitude control
-    if(!attitudeControl) endDrift();
+
   }
   else {
     noSignal();
@@ -129,7 +129,7 @@ void init(){
     println(item);
   }
   //engineering adjustments
-  DeregulateDilithuimColumator();
+  
   //location
   earth = new Planet(2*width/3, height/4, 50);
   moon = new Planet(2.1*width/3, height/3, 10);
@@ -151,28 +151,7 @@ void dropOutOfWarp(){
   location = "sector " + int(x) + "-" + int(y);
 }
 
-/////////////////////////////////////////////////////
-///////////engineering working party/////////////////
-/////////////////////////////////////////////////////
-void beginDrift(){
-  drift += 0.01;
-  pushMatrix();
-  translate(width/2, height/2);
-  rotate(drift);
-}
 
-void endDrift(){
-  popMatrix();
-}
-
-void DeregulateDilithuimColumator(){
-  char[] bin = binary(healthbar.checksum).toCharArray();
-  bin[bin.length-2] = '0';
-  healthbar.checksum = unbinary(new String(bin));
-}
-/////////////////////////////////////////////////////
-//////////end engineering working party//////////////
-/////////////////////////////////////////////////////
 
 void noSignal(){
   noStroke();
